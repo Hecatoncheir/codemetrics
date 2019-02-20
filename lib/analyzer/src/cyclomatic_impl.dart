@@ -56,7 +56,8 @@ class CyclomaticAnalysisRecorder extends Object implements AnalysisRecorder {
   @override
   void record(String recordName, value) {
     if (!_hasStartedGroup) {
-      throw new StateError('No record groups have been started. Use `startRecordGroup` before `record`');
+      throw new StateError(
+          'No record groups have been started. Use `startRecordGroup` before `record`');
     }
     if (recordName == null) {
       throw new ArgumentError.notNull('recordName');
@@ -65,7 +66,8 @@ class CyclomaticAnalysisRecorder extends Object implements AnalysisRecorder {
   }
 }
 
-class CyclomaticAnalyzer extends Object implements Analyzer<CyclomaticAnalysisRecorder> {
+class CyclomaticAnalyzer extends Object
+    implements Analyzer<CyclomaticAnalysisRecorder> {
   CyclomaticAnalysisRecorder _recorder;
 
   @override
@@ -103,7 +105,10 @@ class CyclomaticAnalyzer extends Object implements Analyzer<CyclomaticAnalysisRe
 
   void recordDeclarationNamesFor(Iterable<ScopedDeclaration> declarations) {
     _recorder.record(
-        "callables", declarations.map((ScopedDeclaration dec) => _getQualifiedName(dec)).toList(growable: false));
+        "callables",
+        declarations
+            .map((ScopedDeclaration dec) => _getQualifiedName(dec))
+            .toList(growable: false));
   }
 
   void recordDeclarationComplexity(ScopedDeclaration dec, int complexity) {

@@ -14,6 +14,11 @@ main(List<String> args) {
   parser.addOption('analysis-root',
       defaultsTo: './',
       help: 'Root path from which all dart files will be analyzed');
+
+  parser.addOption('begin-warning-complexity-number', defaultsTo: '0');
+  parser.addOption('begin-error-complexity-number', defaultsTo: '0');
+  parser.addOption('print-all', defaultsTo: 'false');
+
   var arguments = parser.parse(args);
 
   var dartFiles = new Glob('**.dart')
@@ -46,7 +51,11 @@ main(List<String> args) {
       reporter = new JsonReporter(runner);
       break;
     case 'printf':
-      reporter = new PrintFReporter(runner);
+      reporter = new PrintFReporter(
+          runner,
+          int.parse(arguments['begin-warning-complexity-number']),
+          int.parse(arguments['begin-error-complexity-number']),
+          arguments['print-all'] == 'true' ? true : false);
       break;
     default:
       throw new ArgumentError.value(
