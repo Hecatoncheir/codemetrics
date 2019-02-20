@@ -8,8 +8,8 @@ const List<String> IGNORED_PATH_PARTS = const ['.pub', 'packages'];
 main(List<String> args) {
   var parser = new ArgParser();
   parser.addOption('report-format',
-      allowed: ['html', 'js'],
-      defaultsTo: 'js',
+      allowed: ['html', 'js', 'printf'],
+      defaultsTo: 'printf',
       help: 'The format of the output of the analysis');
   parser.addOption('analysis-root',
       defaultsTo: './',
@@ -44,6 +44,9 @@ main(List<String> args) {
       break;
     case 'js':
       reporter = new JsonReporter(runner);
+      break;
+    case 'printf':
+      reporter = new PrintFReporter(runner);
       break;
     default:
       throw new ArgumentError.value(
