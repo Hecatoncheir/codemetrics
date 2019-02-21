@@ -34,6 +34,37 @@ pub global activate --source git https://github.com/daniel-v/codemetrics.git
 
 Executable name is `dart-codemetrics`
 
+```
+dart-codemetrics --begin-warning-complexity-number=2 --begin-error-complexity-number=4
+```
+print:
+```
+./bin\codemetrics.dart
+    main - 10 - ERROR
+
+./lib\analyzer\src\cyclomatic_impl.dart
+    _getQualifiedName - 3 - WARNING
+    CyclomaticAnalysisRecorder.startRecordGroup - 3 - WARNING
+    CyclomaticAnalysisRecorder.record - 3 - WARNING
+    CyclomaticAnalyzer.runAnalysis - 2 - WARNING
+    CyclomaticAnalyzer.runComplexityAnalysisFor - 2 - WARNING
+    CyclomaticAnalysisRunner.run - 2 - WARNING
+
+./lib\cyclomatic\src\control_flow_ast_visitor.dart
+    ControlFlowVisitor.increaseComplexity - 2 - WARNING
+    ControlFlowVisitor.visitBlockFunctionBody - 3 - WARNING
+
+./lib\reporter\src\printf_reporter.dart
+    PrintFReporter._isErrorMustBePrint - 2 - WARNING
+    PrintFReporter._isWarningMustBePrint - 3 - WARNING
+    PrintFReporter.getReport - 11 - ERROR
+```
+
+or use `print-all` for see more:
+```
+dart-codemetrics --print-all=true --begin-warning-complexity-number=2 --begin-error-complexity-number=4 
+```
+
 ### Reporting options
 
 For *html* output use the *--report-format=html* and for JSON use *--report-format=json*.

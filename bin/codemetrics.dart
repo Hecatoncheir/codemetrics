@@ -8,12 +8,17 @@ const List<String> IGNORED_PATH_PARTS = const ['.pub', 'packages'];
 main(List<String> args) {
   var parser = new ArgParser();
   parser.addOption('report-format',
-      allowed: ['html', 'js'],
-      defaultsTo: 'js',
+      allowed: ['html', 'js', 'printf'],
+      defaultsTo: 'printf',
       help: 'The format of the output of the analysis');
   parser.addOption('analysis-root',
       defaultsTo: './',
       help: 'Root path from which all dart files will be analyzed');
+
+  parser.addOption('begin-warning-complexity-number', defaultsTo: '0');
+  parser.addOption('begin-error-complexity-number', defaultsTo: '0');
+  parser.addOption('print-all', defaultsTo: 'false');
+
   var arguments = parser.parse(args);
 
   var dartFiles = new Glob('**.dart')
@@ -44,6 +49,13 @@ main(List<String> args) {
       break;
     case 'js':
       reporter = new JsonReporter(runner);
+      break;
+    case 'printf':
+      reporter = new PrintFReporter(
+          runner,
+          int.parse(arguments['begin-warning-complexity-number']),
+          int.parse(arguments['begin-error-complexity-number']),
+          arguments['print-all'] == 'true' ? true : false);
       break;
     default:
       throw new ArgumentError.value(
