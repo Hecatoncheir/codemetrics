@@ -19,7 +19,7 @@ dev_dependencies:
   mockito: any
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: ">=2.3.0-dev <3.0.0"
 
 executables:
   dart-codemetrics: codemetrics
