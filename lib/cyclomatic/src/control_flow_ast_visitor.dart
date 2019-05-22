@@ -33,13 +33,13 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
   }
 
   @override
-  visitAssertStatement(AssertStatement node) {
+  void visitAssertStatement(AssertStatement node) {
     increaseComplexity('assertStatement');
     super.visitAssertStatement(node);
   }
 
   @override
-  visitBlockFunctionBody(BlockFunctionBody node) {
+  void visitBlockFunctionBody(BlockFunctionBody node) {
     Token tok = node.beginToken;
     while (tok != node.block.rightBracket) {
       if (tok.matchesAny(
@@ -52,55 +52,49 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
   }
 
   @override
-  visitCatchClause(CatchClause node) {
+  void visitCatchClause(CatchClause node) {
     increaseComplexity('catchClause');
     super.visitCatchClause(node);
   }
 
   @override
-  visitConditionalExpression(ConditionalExpression node) {
+  void visitConditionalExpression(ConditionalExpression node) {
     increaseComplexity('conditionalExpression');
     super.visitConditionalExpression(node);
   }
 
   @override
-  visitForStatement(ForStatement node) {
+  void visitForStatement(ForStatement node) {
     increaseComplexity('forStatement');
     super.visitForStatement(node);
   }
 
   @override
-  visitForEachStatement(ForEachStatement node) {
-    increaseComplexity('forEachStatement');
-    super.visitForEachStatement(node);
-  }
-
-  @override
-  visitIfStatement(IfStatement node) {
+  void visitIfStatement(IfStatement node) {
     increaseComplexity('ifStatement');
     super.visitIfStatement(node);
   }
 
   @override
-  visitSwitchDefault(SwitchDefault node) {
+  void visitSwitchDefault(SwitchDefault node) {
     increaseComplexity('switchDefault');
     super.visitSwitchDefault(node);
   }
 
   @override
-  visitSwitchCase(SwitchCase node) {
+  void visitSwitchCase(SwitchCase node) {
     increaseComplexity('switchCase');
     super.visitSwitchCase(node);
   }
 
   @override
-  visitWhileStatement(WhileStatement node) {
+  void visitWhileStatement(WhileStatement node) {
     increaseComplexity('whileStatement');
     super.visitWhileStatement(node);
   }
 
   @override
-  visitYieldStatement(YieldStatement node) {
+  void visitYieldStatement(YieldStatement node) {
     increaseComplexity('yieldStatement');
     super.visitYieldStatement(node);
   }

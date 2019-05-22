@@ -7,19 +7,19 @@ description: >
   Codemetrics for Dart is a simple command line utility that provides some
   insight into the "quality" of code.
 dependencies:
-  analyzer: ^0.32.3
-  built_collection: ^3.0.0
-  glob: ^1.1.0
-  path: ^1.6.1
-  html: ^0.13.3
-  args: ^1.4.0
-  resource: ^2.1.0
+  analyzer: ^0.36.3
+  built_collection: ^4.2.2
+  glob: ^1.1.7
+  path: ^1.6.2
+  html: ^0.14.0+2
+  args: ^1.5.1
+  resource: ^2.1.5
 dev_dependencies:
-  test: ^1.0.0
+  test: any
   mockito: any
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.3.1 <3.0.0"
 
 executables:
   dart-codemetrics: codemetrics

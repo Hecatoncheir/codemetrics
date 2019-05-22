@@ -28,19 +28,19 @@ class CallableAstVisitor extends RecursiveAstVisitor<Object> {
   }
 
   @override
-  visitFunctionDeclaration(FunctionDeclaration node) {
+  void visitFunctionDeclaration(FunctionDeclaration node) {
     registerDeclaration(node);
     super.visitFunctionDeclaration(node);
   }
 
   @override
-  visitMethodDeclaration(MethodDeclaration node) {
+  void visitMethodDeclaration(MethodDeclaration node) {
     registerDeclaration(node);
     super.visitMethodDeclaration(node);
   }
 
   @override
-  visitClassDeclaration(ClassDeclaration node) {
+  void visitClassDeclaration(ClassDeclaration node) {
     enclosingClass = node;
     super.visitClassDeclaration(node);
     enclosingClass = null;

@@ -115,11 +115,13 @@ class CyclomaticAnalyzer extends Object
     _recorder.record(_getQualifiedName(dec), complexity);
   }
 
-  Map<String, dynamic> getDeclarationMetadata(ScopedDeclaration dec) {
+  Declaration getDeclarationMetadata(ScopedDeclaration dec) {
     Map<String, dynamic> meta = {};
     meta["loc"] = dec.declaration.length;
 
     dec.declaration;
+
+    return dec.declaration;
   }
 }
 
